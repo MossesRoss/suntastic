@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>About Us | Suntastic Engineering</title>
+    <meta name="description" content="Suntastic Engineering is a solar EPC company serving homes, industries and government projects across Tamil Nadu and Kerala." />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" href="images/5b55c9a5e03751532348837Suntastic-Logo.png" />
+    <link rel="canonical" href="https://suntasticsolarsystems.com/about-us.html" />
+    <meta name="theme-color" content="#0F172A" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="About Us | Suntastic Engineering" />
+    <meta property="og:description" content="Suntastic Engineering is a solar EPC company serving homes, industries and government projects across Tamil Nadu and Kerala." />
+    <meta property="og:url" content="https://suntasticsolarsystems.com/about-us.html" />
+    <meta property="og:site_name" content="Suntastic Engineering" />
+    <meta property="og:image" content="https://suntasticsolarsystems.com/images/5b55c9a5e03751532348837Suntastic-Logo.png" />
+    <meta name="twitter:card" content="summary" />
+
+    <!-- Editorial Minimalist Typography: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                    },
+                    colors: {
+                        alabaster: '#F8FAFC',
+                        obsidian: '#0F172A',
+                        amber: {
+                            500: '#F59E0B',
+                            600: '#D97706',
+                            700: '#B45309',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Native SPA-Grade Multi-Page View Transitions */
+        @view-transition {
+            navigation: auto;
+        }
+
+        /* Tabular Numerals for Zero-Jitter Financial & Telemetry Readouts */
+        .tabular-nums {
+            font-variant-numeric: tabular-nums;
+        }
+
+        details>summary {
+            list-style: none;
+        }
+
+        details>summary::-webkit-details-marker {
+            display: none;
+        }
+
+        /* Client Logo Strip: real scroll container (drag / swipe / wheel) + JS auto-drift */
+        .client-marquee-track {
+            display: flex;
+            width: max-content;
+        }
+
+        .no-scrollbar {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        #client-scroller {
+            overscroll-behavior-x: contain;
+            overflow-y: hidden;
+            touch-action: pan-x pan-y;
+        }
+
+        #client-scroller.is-dragging {
+            cursor: grabbing !important;
+        }
+
+        #client-scroller:focus-visible {
+            outline: 2px solid #F59E0B;
+            outline-offset: 2px;
+        }
+
+        /* Sun-Cycle Showpiece Section */
+        .sc-bg { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease; }
+        .sc-bg.is-on { opacity: 1; }
+        .sc-dawn { background: linear-gradient(180deg, #1e1b4b 0%, #7c3aed 50%, #f59e0b 100%); }
+        .sc-noon { background: linear-gradient(180deg, #0f2a5c 0%, #2563eb 55%, #fbbf24 120%); }
+        .sc-dusk { background: linear-gradient(180deg, #3b0764 0%, #be185d 50%, #f97316 100%); }
+        .sc-night { background: linear-gradient(180deg, #020617 0%, #0f172a 60%, #1e293b 100%); }
+
+        /* Stat tabs: the active one is boxed, the rest fade back */
+        .sc-stat {
+            padding: 1.1rem .75rem; border-radius: .9rem; text-align: center;
+            border: 1px solid transparent; color: rgba(255, 255, 255, .72);
+            transition: background-color .3s, border-color .3s, color .3s, box-shadow .3s;
+        }
+        .sc-stat:hover { background: rgba(255, 255, 255, .07); color: #fff; }
+        .sc-stat:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+        .sc-stat.is-active {
+            color: #fff; background: rgba(255, 255, 255, .1);
+            border-color: rgba(255, 255, 255, .75); box-shadow: 0 0 0 3px rgba(255, 255, 255, .08);
+        }
+
+        /* Time-of-day button (top-right of the canvas) */
+        .sc-time {
+            position: absolute; top: .5rem; right: .5rem; display: inline-flex; align-items: center; gap: .5rem;
+            padding: .55rem .9rem; border-radius: 999px; font-size: .8rem; font-weight: 600; color: #fff;
+            background: rgba(15, 23, 42, .5); border: 1px solid rgba(255, 255, 255, .4);
+            -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: background-color .25s;
+        }
+        .sc-time:hover { background: rgba(15, 23, 42, .75); }
+        .sc-time:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+        /* Optical Normalization for Client Logos */
+        .client-logo-card {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.35s ease,
+                box-shadow 0.35s ease;
+        }
+
+        .client-logo-card img {
+            filter: grayscale(100%) contrast(1.08);
+            opacity: 0.72;
+            transition: filter 0.35s ease, opacity 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .client-logo-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(245, 158, 11, 0.45);
+            box-shadow: 0 14px 28px -10px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(245, 158, 11, 0.15);
+        }
+
+        .client-logo-card:hover img {
+            filter: grayscale(0%) contrast(1);
+            opacity: 1;
+            transform: scale(1.04);
+        }
+
+        /* Hero Ken Burns Optical Scale & Progress Pill */
+        .hero-slide img {
+            transform: scale(1.06);
+            transition: transform 4.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .hero-slide.is-active img {
+            transform: scale(1);
+        }
+
+        @keyframes pillProgress {
+            from {
+                transform: scaleX(0);
+            }
+
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        .hero-dot-fill {
+            transform-origin: left center;
+            animation: pillProgress 4000ms linear forwards;
+        }
+
+        /* Cursor-Tracked Solar Irradiance Spotlight Cards */
+        .spotlight-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spotlight-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(520px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                    rgba(245, 158, 11, 0.09),
+                    transparent 45%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .spotlight-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Scroll-Driven & Interactive 4-Step Process Bar */
+        .process-step-card {
+            position: relative;
+            transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .process-step-bar {
+            position: absolute;
+            top: -2px;
+            left: 0;
+            height: 2px;
+            width: 100%;
+            background: linear-gradient(90deg, #0F172A 0%, #F59E0B 100%);
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .process-step-card.is-step-active .process-step-bar {
+            transform: scaleX(1);
+        }
+
+        .process-icon-shell {
+            transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .process-step-card.is-step-active .process-icon-shell {
+            background-color: #0F172A;
+            color: #F59E0B;
+            border-color: #0F172A;
+            box-shadow: 0 10px 22px -6px rgba(15, 23, 42, 0.22);
+            transform: translateY(-2px);
+        }
+
+        .process-step-card.is-step-active .step-num-badge {
+            color: #D97706;
+        }
+
+        /* Subtle Micro-Animations inside the 4 Unique Process Icons */
+        @keyframes sunOrbitPulse {
+
+            0%,
+            100% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(12deg) scale(1.06);
+            }
+        }
+
+        @keyframes energyFlowDash {
+            to {
+                stroke-dashoffset: -16;
+            }
+        }
+
+        .process-step-card.is-step-active .anim-sun-orbit {
+            transform-origin: center;
+            animation: sunOrbitPulse 3.2s ease-in-out infinite;
+        }
+
+        .process-step-card.is-step-active .anim-dash-flow {
+            stroke-dasharray: 4 4;
+            animation: energyFlowDash 1.2s linear infinite;
+        }
+
+        /* Subtle Ambient Grid Pattern */
+        .architectural-grid-bg {
+            background-image: radial-gradient(rgba(15, 23, 42, 0.055) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        /* =====================================================
+           HERO CREDENTIALS PANEL (xl and up, right of headline)
+           Top-aligned to headline, 12px min text, halved glow/motion
+           ===================================================== */
+        .hof-panel {
+            overflow: hidden;
+            border-radius: 24px;
+            background: linear-gradient(160deg, #111B33 0%, #0B1224 65%, #16120A 135%);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            box-shadow: 0 14px 28px -14px rgba(15, 23, 42, 0.28), 0 0 0 1px rgba(245, 158, 11, 0.08);
+            isolation: isolate;
+        }
+
+        /* Cursor-follow amber glow (cut by half) */
+        .hof-panel::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(245, 158, 11, 0.07), transparent 62%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .hof-panel:hover::after {
+            opacity: 1;
+        }
+
+        .hof-grid {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 18px 18px;
+            -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 30%, transparent 78%);
+            mask-image: radial-gradient(ellipse at 50% 40%, #000 30%, transparent 78%);
+        }
+
+        /* Glow reduced by 50% in opacity and animation amplitude */
+        .hof-glow {
+            position: absolute;
+            left: 50%;
+            top: 140px;
+            width: 260px;
+            height: 260px;
+            margin: -130px 0 0 -130px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0.04) 45%, transparent 70%);
+            filter: blur(6px);
+            animation: hofGlow 8s ease-in-out infinite;
+        }
+
+        .hof-head {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 3;
+            margin-bottom: 12px;
+        }
+
+        .hof-title {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #FDE68A;
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(251, 191, 36, 0.28);
+        }
+
+        .hof-title i {
+            color: #FBBF24;
+            font-size: 12px;
+        }
+
+        .hof-region {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 12px;
+            font-weight: 500;
+            color: #CBD5E1;
+        }
+
+        /* Credential card stack (primary elements) */
+        .hof-stack {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 3;
+        }
+
+        .hof-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .hof-card {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.11);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .hof-card:hover {
+            border-color: rgba(251, 191, 36, 0.45);
+            background: rgba(255, 255, 255, 0.09);
+        }
+
+        .hof-card-featured {
+            padding: 13px 14px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.04));
+            border-color: rgba(251, 191, 36, 0.32);
+        }
+
+        .hof-ic {
+            flex: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            color: #FBBF24;
+            background: rgba(245, 158, 11, 0.14);
+            border: 1px solid rgba(251, 191, 36, 0.25);
+        }
+
+        .hof-card-featured .hof-ic {
+            width: 42px;
+            height: 42px;
+            border-radius: 11px;
+            font-size: 17px;
+            color: #0F172A;
+            background: linear-gradient(135deg, #FDE68A, #F59E0B 60%, #D97706);
+            border: none;
+            box-shadow: 0 4px 12px -4px rgba(245, 158, 11, 0.45);
+        }
+
+        .hof-txt {
+            min-width: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .hof-txt strong {
+            font-size: 13.5px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        .hof-card-featured .hof-txt strong {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        /* Minimum 12px sub-labels */
+        .hof-txt small {
+            font-size: 12px;
+            line-height: 1.3;
+            color: #CBD5E1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .hof-badge {
+            flex: none;
+            padding: 4px 9px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #FDE68A;
+            background: rgba(245, 158, 11, 0.14);
+            border: 1px solid rgba(251, 191, 36, 0.28);
+        }
+
+        /* Entrance + halved float animation */
+        .hof-anim {
+            animation: hofRise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both var(--d, 0s),
+                hofFloat 9s ease-in-out infinite alternate calc(var(--d, 0s) + 0.6s);
+        }
+
+        @keyframes hofRise {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes hofFloat {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-2px);
+            }
+        }
+
+        @keyframes hofGlow {
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: scale(0.98);
+            }
+
+            50% {
+                opacity: 0.75;
+                transform: scale(1.02);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .hof-panel *,
+            .hof-panel *::after {
+                animation: none !important;
+            }
+        }
+    
+        /* Mobile/launch fixes */
+        html { scroll-padding-top: 96px; }
+        .hero-dot { height: 26px !important; border-top: 10px solid transparent !important; border-bottom: 10px solid transparent !important; background-clip: padding-box; }
+        .wa-float { bottom: max(1.5rem, env(safe-area-inset-bottom)) !important; right: max(1.5rem, env(safe-area-inset-right)) !important; }
+    </style>
+</head>
+<body class="bg-white text-slate-900 font-sans antialiased selection:bg-amber-500 selection:text-white">
+<header
+        class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-slate-200/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
+
+            <!-- Official Suntastic Brand Logo (Improved wordmark legibility) -->
+            <a href="index.html" class="flex items-center gap-3 shrink-0">
+                <img src="images/logo.png" alt="Suntastic Engineering" class="h-[60px] w-auto object-contain"
+                    onerror="if(!this.dataset.TriedAlt){this.dataset.TriedAlt='1';this.src='images/5b55c9a5e03751532348837Suntastic-Logo.png';}else{this.style.display='none';document.getElementById('fallback-logo').style.display='flex';}" />
+                <div id="fallback-logo" class="hidden items-center gap-2.5">
+                    <svg class="w-11 h-11 text-[#F59E0B]" viewBox="0 0 64 64" fill="none">
+                        <circle cx="32" cy="32" r="26" stroke="currentColor" stroke-width="4" stroke-dasharray="12 6" />
+                        <circle cx="32" cy="32" r="20" stroke="currentColor" stroke-width="3" stroke-dasharray="10 5" />
+                        <circle cx="32" cy="32" r="14" stroke="currentColor" stroke-width="2.5"
+                            stroke-dasharray="8 4" />
+                    </svg>
+                    <span class="font-bold text-xl tracking-wider text-slate-900">
+                        SUN TASTIC<sup class="text-xs font-semibold ml-0.5">TM</sup>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Center Navigation: High-Intent Marketing Links (Removed redundant Home link) -->
+            <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-600">
+                <a href="about-us.html" class="hover:text-slate-900 transition whitespace-nowrap">About Us</a>
+
+                <!-- Solutions Dropdown (Links to dedicated pathway pages) -->
+                <div class="relative group py-6">
+                    <button type="button"
+                        class="flex items-center gap-1.5 hover:text-slate-900 transition whitespace-nowrap">
+                        <span>Solutions</span>
+                        <i
+                            class="fa-solid fa-chevron-down text-xs text-slate-400 group-hover:rotate-180 transition-transform"></i>
+                    </button>
+                    <div
+                        class="absolute left-0 top-full pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                        <div
+                            class="w-64 bg-white/95 backdrop-blur-xl rounded-xl border border-slate-200/90 shadow-xl p-2 space-y-1">
+                            <a href="residential.html"
+                                class="block px-3.5 py-2.5 rounded-lg hover:bg-amber-50/60 transition">
+                                <div class="text-xs font-semibold text-slate-900">Residential Rooftops</div>
+                                <div class="text-xs text-slate-500 mt-0.5">Homes, villas & apartments</div>
+                            </a>
+                            <a href="commercial-industrial.html"
+                                class="block px-3.5 py-2.5 rounded-lg hover:bg-amber-50/60 transition">
+                                <div class="text-xs font-semibold text-slate-900">Commercial & Industrial EPC</div>
+                                <div class="text-xs text-slate-500 mt-0.5">Factories, hospitals & institutions</div>
+                            </a>
+                            <a href="on-grid-hybrid.html"
+                                class="block px-3.5 py-2.5 rounded-lg hover:bg-amber-50/60 transition">
+                                <div class="text-xs font-semibold text-slate-900">On-Grid & Hybrid Systems</div>
+                                <div class="text-xs text-slate-500 mt-0.5">TANGEDCO & KSEB net-metering</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="index.html#faq" class="hover:text-slate-900 transition whitespace-nowrap">Subsidy Scheme</a>
+                <a href="calculator.html" class="hover:text-slate-900 transition whitespace-nowrap">Solar Calculator</a>
+                <a href="index.html#projects" class="hover:text-slate-900 transition whitespace-nowrap">Projects</a>
+                <a href="blog.html" class="hover:text-slate-900 transition whitespace-nowrap">Blog</a>
+            </nav>
+
+            <!-- Right Action: Direct Helpline + High-Contrast Amber Get Free Quote Button -->
+            <div class="hidden md:flex items-center gap-5 shrink-0">
+                <a href="tel:+918148133644"
+                    class="text-sm font-medium text-slate-600 hover:text-slate-900 transition whitespace-nowrap flex items-center gap-2 tabular-nums">
+                    <i class="fa-solid fa-phone text-xs text-amber-500"></i>
+                    <span>+91 81481 33644</span>
+                </a>
+                <a href="index.html#consultation"
+                    class="magnetic-btn px-5 py-2.5 rounded-full bg-[#F59E0B] hover:bg-[#D97706] text-slate-900 font-semibold text-sm shadow-sm transition whitespace-nowrap">
+                    Get Free Quote
+                </a>
+            </div>
+
+            <!-- Mobile Menu Trigger -->
+            <button id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden p-2 text-slate-600 hover:text-slate-900" aria-label="Menu">
+                <i class="fa-solid fa-bars text-lg"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Drawer (Removed redundant Home link, fixed CTA contrast) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-6 py-6 space-y-4">
+            <a href="about-us.html" class="block text-base font-medium text-slate-800">About Us</a>
+            <a href="residential.html" class="block text-base font-medium text-slate-800">Residential Solutions</a>
+            <a href="commercial-industrial.html" class="block text-base font-medium text-slate-800">Commercial &
+                Industrial EPC</a>
+            <a href="on-grid-hybrid.html" class="block text-base font-medium text-slate-800">On-Grid & Hybrid
+                Systems</a>
+            <a href="index.html#faq" class="block text-base font-medium text-slate-800">Subsidy Scheme (Up to ₹1,00,000)</a>
+            <a href="calculator.html" class="block text-base font-medium text-slate-800">Solar Calculator</a>
+            <a href="index.html#projects" class="block text-base font-medium text-slate-800">Projects</a>
+            <a href="blog.html" class="block text-base font-medium text-slate-800">Blog</a>
+            <div class="pt-4 border-t border-slate-100 flex flex-col gap-3">
+                <a href="tel:+918148133644" class="text-sm font-medium text-slate-600 tabular-nums">Call +91 81481
+                    33644</a>
+                <a href="index.html#consultation"
+                    class="w-full py-3 rounded-full bg-[#F59E0B] hover:bg-[#D97706] text-slate-900 text-center text-sm font-semibold">
+                    Get Free Quote
+                </a>
+            </div>
+        </div>
+    </header>
+<main>
+<section class="bg-alabaster border-b border-slate-200"><div class="max-w-7xl mx-auto px-6 lg:px-8 py-14 lg:py-20">
+<div class="flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-amber-600"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>About Us</div>
+<h1 class="mt-4 text-4xl lg:text-5xl font-semibold tracking-tight text-obsidian max-w-3xl">Engineering a brighter, cleaner future.</h1>
+<p class="mt-5 text-lg text-slate-600 max-w-2xl leading-relaxed">Suntastic Engineering Private Limited is a solar engineering and EPC company helping homes, businesses, institutions and government bodies across South India adopt clean, reliable and cost-effective solar energy.</p></div></section>
+<section class="border-b border-slate-200"><div class="max-w-7xl mx-auto px-6 lg:px-8 py-10 grid grid-cols-2 md:grid-cols-3 gap-8"><div><div class="text-3xl lg:text-4xl font-semibold tracking-tight text-obsidian tabular-nums">10+ MWp</div><div class="mt-1 text-xs font-medium uppercase tracking-wider text-slate-500">Solar capacity installed</div></div><div><div class="text-3xl lg:text-4xl font-semibold tracking-tight text-obsidian tabular-nums">5,000+</div><div class="mt-1 text-xs font-medium uppercase tracking-wider text-slate-500">Home lighting systems</div></div><div><div class="text-3xl lg:text-4xl font-semibold tracking-tight text-obsidian tabular-nums">20,000+</div><div class="mt-1 text-xs font-medium uppercase tracking-wider text-slate-500">LED lighting systems</div></div></div></section>
+<section class="max-w-7xl mx-auto px-6 lg:px-8 py-14 lg:py-20 grid lg:grid-cols-2 gap-12">
+<div><h2 class="text-2xl font-semibold tracking-tight text-obsidian">Who we are</h2>
+<p class="mt-3 text-slate-600 leading-relaxed">We combine engineering expertise, quality equipment, skilled execution and project management to deliver solar projects that meet the technical and commercial needs of our clients.</p>
+<p class="mt-3 text-slate-600 leading-relaxed">Our experience covers residential and commercial & industrial rooftops, ground-mounted plants, captive projects, government and institutional projects, hybrid and battery storage systems, plus operations, maintenance and monitoring.</p>
+<p class="mt-3 text-slate-600 leading-relaxed">We work with clients from planning through commissioning and beyond, so every project fits its energy requirement, site, budget and long-term goals.</p></div>
+<div><h2 class="text-2xl font-semibold tracking-tight text-obsidian">What we do</h2><ul class="mt-4 space-y-4"><li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-amber-500"></span><p class="text-slate-600 leading-relaxed"><span class="font-semibold text-obsidian">Engineering.</span> Technically sound solar designs based on site conditions, energy needs, electrical infrastructure, structure and applicable standards.</p></li><li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-amber-500"></span><p class="text-slate-600 leading-relaxed"><span class="font-semibold text-obsidian">Procurement.</span> Quality modules, inverters, structures, cables and protection systems from reliable manufacturers and suppliers.</p></li><li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-amber-500"></span><p class="text-slate-600 leading-relaxed"><span class="font-semibold text-obsidian">Construction & installation.</span> Complete installation with emphasis on safety, workmanship and project timelines.</p></li><li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-amber-500"></span><p class="text-slate-600 leading-relaxed"><span class="font-semibold text-obsidian">Testing & commissioning.</span> Systematic testing for safe operation, reliable performance and proper grid integration.</p></li><li class="flex gap-3"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-amber-500"></span><p class="text-slate-600 leading-relaxed"><span class="font-semibold text-obsidian">Operations & maintenance.</span> Monitoring, preventive and corrective maintenance, and performance support to maximise generation.</p></li></ul></div></section>
+<section class="bg-alabaster border-y border-slate-200"><div class="max-w-7xl mx-auto px-6 lg:px-8 py-14 lg:py-20 grid md:grid-cols-2 gap-6">
+<div class="rounded-2xl border border-slate-200 bg-white p-6"><h3 class="font-semibold text-obsidian">Our mission</h3><p class="mt-2 text-sm text-slate-600 leading-relaxed">To accelerate India’s transition to clean energy with reliable, innovative and cost-effective solar solutions, delivered through engineering excellence, quality execution and customer-focused service.</p></div>
+<div class="rounded-2xl border border-slate-200 bg-white p-6"><h3 class="font-semibold text-obsidian">Our vision</h3><p class="mt-2 text-sm text-slate-600 leading-relaxed">To be a trusted and leading solar engineering and EPC partner in India, enabling businesses, institutions, industries and communities to build a cleaner, more sustainable future.</p></div></div></section>
+<section class="max-w-7xl mx-auto px-6 lg:px-8 py-14 lg:py-20"><h2 class="text-2xl font-semibold tracking-tight text-obsidian">Why choose Suntastic</h2>
+<div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"><div class="rounded-2xl border border-slate-200 bg-white p-6"><h3 class="font-semibold text-obsidian">Engineering-driven approach</h3><p class="mt-2 text-sm text-slate-600 leading-relaxed">Projects built on strong electrical, structural and system engineering.</p></div><div class="rounded-2xl border border-slate-200 bg-white p-6"><h3 class="font-semibold text-obsidian">End-to-end EPC capability</h3><p class="mt-2 text-sm text-slate-600 leading-relaxed">One window from concept to commissioning.</p></div><div class="rounded-2xl border border-slate-200 bg-white p-6"><h3 class="font-semibold text-obsidian">Quality-focused execution</h3><p class="mt-2 text-sm text-slate-600 leading-relaxed">Quality materials, professional installation, safety, testing and documentation.</p></div><div class="rounded-2xl border border-slate-200 bg-white p-6"><h3 class="font-semibold text-obsidian">Customised solutions</h3><p class="mt-2 text-sm text-slate-600 leading-relaxed">Systems sized to your consumption, site, technical needs and investment goals.</p></div><div class="rounded-2xl border border-slate-200 bg-white p-6"><h3 class="font-semibold text-obsidian">Long-term partnership</h3><p class="mt-2 text-sm text-slate-600 leading-relaxed">Support continues after installation through monitoring, maintenance and after-sales service.</p></div><div class="rounded-2xl border border-slate-200 bg-white p-6"><h3 class="font-semibold text-obsidian">Commitment to sustainability</h3><p class="mt-2 text-sm text-slate-600 leading-relaxed">Every project reduces dependence on conventional energy and lowers emissions.</p></div></div></section>
+<section id="empanelments" class="bg-alabaster border-t border-slate-200"><div class="max-w-7xl mx-auto px-6 lg:px-8 py-14 lg:py-20 grid lg:grid-cols-2 gap-10">
+<div><h2 class="text-2xl font-semibold tracking-tight text-obsidian">Empanelments & recognitions</h2><ul class="mt-4 space-y-3"><li class="flex gap-3 text-slate-600"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-amber-500"></span>Empanelled PM Surya Ghar vendor</li><li class="flex gap-3 text-slate-600"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-amber-500"></span>‘S’ Class Contractor, Military Engineer Services (MES)</li><li class="flex gap-3 text-slate-600"><span class="mt-2 w-1.5 h-1.5 shrink-0 rounded-full bg-amber-500"></span>Empanelled with Power & Energy, PWD, ANERT, KSEB, TEDA, MNRE, TANGEDCO, Corporations, Railways and Highways departments</li></ul></div>
+<div><h2 class="text-2xl font-semibold tracking-tight text-obsidian">Where we work</h2><p class="mt-3 text-slate-600 leading-relaxed">Registered office in Chennai (Chrompet), a branch in Coimbatore (Madukkarai), and presence in Palakkad and Thiruvananthapuram, serving Tamil Nadu and Kerala.</p></div></div></section><section class="bg-obsidian"><div class="max-w-7xl mx-auto px-6 lg:px-8 py-14 flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div><h2 class="text-2xl lg:text-3xl font-semibold tracking-tight text-white">Planning solar for your home or business?</h2><p class="mt-2 text-slate-400">Get a site-specific proposal from our engineers. No obligation.</p></div>
+<div class="flex flex-wrap gap-3"><a href="index.html#consultation" class="px-7 py-3.5 rounded-full bg-[#F59E0B] hover:bg-[#D97706] text-slate-900 text-sm font-semibold transition">Get Free Quote</a>
+<a href="tel:+918148133644" class="px-7 py-3.5 rounded-full border border-slate-600 text-white text-sm font-semibold hover:bg-white/10 transition">Call +91 81481 33644</a></div></div></section>
+</main>
+<footer class="bg-[#05070B] text-slate-400 relative mt-28">
+
+        <!-- Top Overlapping CTA Banner in Suntastic Logo Orange -->
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div
+                class="-translate-y-1/2 rounded-2xl bg-gradient-to-r from-[#F59E0B] to-[#D97706] px-8 py-10 sm:px-14 sm:py-12 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+                <div>
+                    <h2 class="text-2xl sm:text-4xl font-bold tracking-tight text-white">
+                        Get in touch with our team of experts
+                    </h2>
+                    <p class="mt-2 text-sm text-white/90">
+                        MNRE & TANGEDCO Empanelled Solar EPC • Serving Tamil Nadu & Kerala
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-6">
+                    <a href="index.html#consultation"
+                        class="magnetic-btn px-7 py-3.5 rounded-lg bg-white hover:bg-slate-100 text-slate-900 text-sm font-semibold shadow-sm transition">
+                        Contact us
+                    </a>
+
+                    <a href="tel:+918148133644" class="flex items-center gap-3.5 group">
+                        <span
+                            class="w-12 h-12 rounded-full bg-white text-[#D97706] flex items-center justify-center shadow-sm group-hover:scale-105 transition">
+                            <i class="fa-solid fa-phone-volume text-lg"></i>
+                        </span>
+                        <div>
+                            <span class="block text-xs text-white/90 font-medium">Need any help</span>
+                            <span
+                                class="block text-base sm:text-lg font-bold text-white tracking-tight tabular-nums">+91
+                                81481
+                                33644</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Dark Footer Content -->
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-4 pb-14">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-14 border-b border-slate-800/80">
+
+                <!-- Brand & Socials (5 Cols) -->
+                <div class="lg:col-span-5 space-y-5">
+                    <a href="index.html" class="inline-flex items-center gap-3">
+                        <img src="images/logo.png" alt="Suntastic Engineering"
+                            class="h-[54px] w-auto object-contain bg-white px-3 py-1.5 rounded-lg"
+                            onerror="if(!this.dataset.TriedAlt){this.dataset.TriedAlt='1';this.src='images/5b55c9a5e03751532348837Suntastic-Logo.png';}else{this.style.display='none';document.getElementById('footer-fallback-logo').style.display='flex';}" />
+                        <div id="footer-fallback-logo" class="hidden items-center gap-2.5">
+                            <svg class="w-10 h-10 text-[#F59E0B]" viewBox="0 0 64 64" fill="none">
+                                <circle cx="32" cy="32" r="26" stroke="currentColor" stroke-width="4"
+                                    stroke-dasharray="12 6" />
+                                <circle cx="32" cy="32" r="20" stroke="currentColor" stroke-width="3"
+                                    stroke-dasharray="10 5" />
+                            </svg>
+                            <span class="font-bold text-xl tracking-wider text-white">
+                                SUN TASTIC<sup class="text-xs font-semibold ml-0.5 text-amber-400">TM</sup>
+                            </span>
+                        </div>
+                    </a>
+                    <p class="text-sm text-slate-400 leading-relaxed max-w-sm">
+                        Providing innovative solar solutions for homes, industries, and government infrastructure.
+                        Committed to a sustainable future across South India.
+                    </p>
+                    <address class="not-italic text-xs text-slate-500 leading-relaxed max-w-sm space-y-2">
+                        <p><span class="text-slate-300">Registered office:</span> No. 69/27A, First Pillaiyar Koil Street, Lakshmipuram, Chrompet, Chennai – 600 044</p>
+                        <p><span class="text-slate-300">Coimbatore branch:</span> SF No 803/2C,3, Site No 308, Covai Auto Mobile Nagar, Madukkarai – 641 105</p>
+                        <p>Also at Palakkad and Thiruvananthapuram</p>
+                    </address>
+                    <div class="flex items-center gap-5 pt-2 text-slate-400">
+                        <a href="https://www.facebook.com/profile.php?id=61586789438858" target="_blank" rel="noopener" aria-label="Facebook"
+                            class="hover:text-amber-400 transition text-lg"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/suntastic_engineering" target="_blank" rel="noopener"
+                            aria-label="Instagram" class="hover:text-amber-400 transition text-lg"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/suntastic-engineering-pvt-ltd/" target="_blank"
+                            rel="noopener" aria-label="LinkedIn" class="hover:text-amber-400 transition text-lg"><i
+                                class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column: Legal -->
+                <div class="lg:col-span-2 space-y-3.5 text-sm">
+                    <div class="text-white font-semibold tracking-tight mb-4">Legal</div>
+                    <ul class="space-y-3">
+                        <li><a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a></li>
+                                                <li><a href="about-us.html#empanelments" class="hover:text-white transition">Empanelments</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column: Company -->
+                <div class="lg:col-span-3 space-y-3.5 text-sm">
+                    <div class="text-white font-semibold tracking-tight mb-4">Company</div>
+                    <ul class="space-y-3">
+                        <li><a href="index.html#proof" class="hover:text-white transition">About</a></li>
+                        <li><a href="residential.html" class="hover:text-white transition">Residential Rooftops</a></li>
+                        <li><a href="commercial-industrial.html" class="hover:text-white transition">Commercial &
+                                Industrial EPC</a></li>
+                        <li><a href="on-grid-hybrid.html" class="hover:text-white transition">On-Grid & Hybrid
+                                Systems</a></li>
+                        <li><a href="index.html#projects" class="hover:text-white transition">Projects</a></li>
+                        <li><a href="career.html" class="hover:text-white transition">Career</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column: Resources -->
+                <div class="lg:col-span-2 space-y-3.5 text-sm">
+                    <div class="text-white font-semibold tracking-tight mb-4">Resources</div>
+                    <ul class="space-y-3">
+                        <li><a href="calculator.html"
+                                class="text-amber-400 hover:text-amber-300 font-medium transition">Solar Calculator</a>
+                        </li>
+                        <li><a href="index.html#faq" class="hover:text-white transition">Subsidy Guide</a></li>
+                        <li><a href="on-grid-hybrid.html" class="hover:text-white transition">Net-Metering Guide</a>
+                        </li>
+                        <li><a href="blog.html" class="hover:text-white transition">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright Bar -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+                <div>© 2026 Suntastic Engineering Private Limited. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+<a href="https://api.whatsapp.com/send?phone=918148133644&text=Hi%20Suntastic%20Engineering,%20I%20would%20like%20to%20discuss%20a%20solar%20installation."
+        target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp" title="Chat with us"
+        class="fixed bottom-6 right-6 z-40 wa-float px-4 h-12 rounded-full bg-slate-900 hover:bg-[#F59E0B] text-white hover:text-slate-900 shadow-xl flex items-center gap-2.5 transition-all duration-300 hover:scale-105 group">
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+        <span class="text-xs font-semibold tracking-wide pr-0.5">Chat with us</span>
+    </a>
+<script>
+const mobileBtn = document.getElementById('mobile-menu-btn'), mobileMenu = document.getElementById('mobile-menu');
+function setMenu(o) { mobileMenu.classList.toggle('hidden', !o); mobileBtn.setAttribute('aria-expanded', String(o)); }
+mobileBtn.addEventListener('click', () => setMenu(mobileMenu.classList.contains('hidden')));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+</script>
+
+</body>
+</html>

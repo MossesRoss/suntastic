@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Metadata -->
+    <title>On-Grid & Hybrid Solar Systems | TANGEDCO & KSEB Net-Metering — Suntastic Engineering</title>
+    <meta name="description"
+        content="Compare On-Grid, Hybrid (Lithium-LFP BESS), and Off-Grid solar architectures. Complete TANGEDCO & KSEB bi-directional net-metering and up to ₹1,00,000 subsidy registration." />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Editorial Minimalist Typography: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                    },
+                    colors: {
+                        alabaster: '#F8FAFC',
+                        obsidian: '#0F172A',
+                        amber: {
+                            500: '#F59E0B',
+                            600: '#D97706',
+                            700: '#B45309',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @view-transition {
+            navigation: auto;
+        }
+
+        .tabular-nums {
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Cursor-Tracked Solar Spotlight Cards */
+        .spotlight-card {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+        }
+
+        .spotlight-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .spotlight-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(520px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                    rgba(245, 158, 11, 0.12),
+                    transparent 45%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .spotlight-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Live Energy-Flow Telemetry Animation */
+        @keyframes photonFlow {
+            to {
+                stroke-dashoffset: -24;
+            }
+        }
+
+        .energy-stream-active {
+            stroke-dasharray: 6 6;
+            animation: photonFlow 0.9s linear infinite;
+        }
+
+        .architectural-grid-bg {
+            background-image: radial-gradient(rgba(15, 23, 42, 0.055) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-slate-900 font-sans antialiased selection:bg-amber-500 selection:text-white">
+
+    <!-- 1. NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
+
+            <!-- Official Suntastic Brand Logo (Scaled +12% larger) -->
+            <a href="index.html" class="flex items-center gap-3 shrink-0">
+                <img src="images/logo.png" alt="Suntastic Engineering" class="h-[54px] w-auto object-contain"
+                    onerror="if(!this.dataset.TriedAlt){this.dataset.TriedAlt='1';this.src='images/5b55c9a5e03751532348837Suntastic-Logo.png';}else{this.style.display='none';document.getElementById('fallback-logo').style.display='flex';}" />
+                <div id="fallback-logo" class="hidden items-center gap-2">
+                    <svg class="w-11 h-11 text-[#F59E0B]" viewBox="0 0 64 64" fill="none">
+                        <circle cx="32" cy="32" r="26" stroke="currentColor" stroke-width="4" stroke-dasharray="12 6" />
+                        <circle cx="32" cy="32" r="20" stroke="currentColor" stroke-width="3" stroke-dasharray="10 5" />
+                        <circle cx="32" cy="32" r="14" stroke="currentColor" stroke-width="2.5"
+                            stroke-dasharray="8 4" />
+                    </svg>
+                    <span class="font-bold text-lg tracking-[0.18em] text-slate-900">
+                        SUN TASTIC<sup class="text-[9px] font-semibold ml-0.5">TM</sup>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Center Navigation -->
+            <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-600">
+                <a href="index.html" class="hover:text-slate-900 transition whitespace-nowrap">Home</a>
+                <a href="index.html#proof" class="hover:text-slate-900 transition whitespace-nowrap">About Us</a>
+
+                <!-- Solutions Dropdown -->
+                <div class="relative group py-6">
+                    <button type="button"
+                        class="flex items-center gap-1.5 text-slate-900 font-semibold transition whitespace-nowrap">
+                        <span>Solutions</span>
+                        <i
+                            class="fa-solid fa-chevron-down text-[10px] text-amber-600 group-hover:rotate-180 transition-transform"></i>
+                    </button>
+                    <div
+                        class="absolute left-0 top-full pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                        <div class="w-64 bg-white/95 backdrop-blur-xl rounded-xl border border-slate-200/90 shadow-xl p-2 space-y-1">
+                            <a href="residential.html"
+                                class="block px-3.5 py-2.5 rounded-lg hover:bg-amber-50/60 transition">
+                                <div class="text-xs font-semibold text-slate-900">Residential Rooftops</div>
+                                <div class="text-[11px] text-slate-500 mt-0.5">Homes, villas & apartments</div>
+                            </a>
+                            <a href="commercial-industrial.html"
+                                class="block px-3.5 py-2.5 rounded-lg hover:bg-amber-50/60 transition">
+                                <div class="text-xs font-semibold text-slate-900">Commercial & Industrial EPC</div>
+                                <div class="text-[11px] text-slate-500 mt-0.5">Factories, hospitals & institutions</div>
+                            </a>
+                            <a href="on-grid-hybrid.html"
+                                class="block px-3.5 py-2.5 rounded-lg bg-amber-50/80 transition">
+                                <div class="text-xs font-semibold text-amber-700">On-Grid & Hybrid Systems</div>
+                                <div class="text-[11px] text-slate-500 mt-0.5">TANGEDCO & KSEB net-metering</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="index.html#faq" class="hover:text-slate-900 transition whitespace-nowrap">Subsidy Scheme</a>
+                <a href="calculator.html" class="hover:text-slate-900 transition whitespace-nowrap">Solar Calculator</a>
+                <a href="index.html#projects" class="hover:text-slate-900 transition whitespace-nowrap">Projects</a>
+                <a href="blog.html" class="hover:text-slate-900 transition whitespace-nowrap">Blog</a>
+            </nav>
+
+            <!-- Right Action -->
+            <div class="hidden md:flex items-center gap-5 shrink-0">
+                <a href="tel:+918148133644"
+                    class="text-sm font-medium text-slate-600 hover:text-slate-900 transition whitespace-nowrap flex items-center gap-2 tabular-nums">
+                    <i class="fa-solid fa-phone text-xs text-amber-500"></i>
+                    <span>+91 81481 33644</span>
+                </a>
+                <a href="#consultation"
+                    class="px-5 py-2.5 rounded-full bg-[#F59E0B] hover:bg-[#D97706] text-white font-semibold text-sm shadow-sm transition whitespace-nowrap">
+                    Get Free Quote
+                </a>
+            </div>
+
+            <!-- Mobile Menu Trigger -->
+            <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-600 hover:text-slate-900" aria-label="Menu">
+                <i class="fa-solid fa-bars text-lg"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-6 py-6 space-y-4">
+            <a href="index.html" class="block text-base font-medium text-slate-800">Home</a>
+            <a href="index.html#proof" class="block text-base font-medium text-slate-800">About Us</a>
+            <a href="residential.html" class="block text-base font-medium text-slate-800">Residential Solutions</a>
+            <a href="commercial-industrial.html" class="block text-base font-medium text-slate-800">Commercial &
+                Industrial EPC</a>
+            <a href="on-grid-hybrid.html" class="block text-base font-semibold text-slate-900">On-Grid & Hybrid
+                Systems</a>
+            <a href="index.html#faq" class="block text-base font-medium text-slate-800">Subsidy Scheme (Up to
+                ₹1,00,000)</a>
+            <a href="calculator.html" class="block text-base font-medium text-slate-800">Solar Calculator</a>
+            <a href="index.html#projects" class="block text-base font-medium text-slate-800">Projects</a>
+            <a href="blog.html" class="block text-base font-medium text-slate-800">Blog</a>
+            <div class="pt-4 border-t border-slate-100 flex flex-col gap-3">
+                <a href="tel:+918148133644" class="text-sm font-medium text-slate-600 tabular-nums">Call +91 81481 33644</a>
+                <a href="#consultation"
+                    class="w-full py-3 rounded-full bg-[#F59E0B] text-white text-center text-sm font-semibold">
+                    Get Free Quote
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. HERO SECTION -->
+    <section class="pt-16 pb-16 lg:pt-24 lg:pb-20 bg-white border-b border-slate-200 architectural-grid-bg">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-3xl">
+                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600 mb-4 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                    <span>System Architectures &nbsp;•&nbsp; TANGEDCO & KSEB Net-Metering</span>
+                </p>
+                <h1 class="text-4xl sm:text-6xl font-semibold tracking-tight text-slate-900 leading-[1.08]">
+                    On-Grid & Hybrid<br />
+                    <span class="text-slate-400 font-normal">Solar Power Systems.</span>
+                </h1>
+                <p class="mt-6 text-lg text-slate-600 leading-relaxed max-w-2xl">
+                    Whether your priority is maximum ROI through bi-directional utility net-metering or uninterrupted
+                    Lithium-LFP battery backup during grid outages, we engineer the right topology for your load profile.
+                </p>
+
+                <div class="mt-9 flex flex-wrap items-center gap-5">
+                    <a href="#architectures"
+                        class="px-7 py-3.5 rounded-full bg-slate-900 hover:bg-amber-600 text-white text-sm font-medium transition shadow-sm">
+                        Compare System Types
+                    </a>
+                    <a href="calculator.html"
+                        class="group text-sm font-medium text-slate-700 hover:text-amber-600 transition flex items-center gap-2 py-2">
+                        <span>Estimate Your Plant Size</span>
+                        <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SYSTEM ARCHITECTURES BREAKDOWN + LIVE ENERGY-FLOW SCHEMATIC -->
+    <section id="architectures" class="py-24 bg-alabaster border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14">
+                <div class="max-w-2xl">
+                    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600 mb-3">
+                        Three Core Topologies
+                    </p>
+                    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900">
+                        Engineered for your grid condition and backup requirements.
+                    </h2>
+                </div>
+
+                <!-- Interactive Topology Telemetry Switcher (Hover or Click any card below to sync) -->
+                <div class="inline-flex p-1 rounded-full bg-slate-200/80 self-start" role="group" aria-label="Interactive Schematic Topology">
+                    <button type="button" data-topo="0" class="topo-pill px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-slate-900 shadow-2xs transition">01 · On-Grid</button>
+                    <button type="button" data-topo="1" class="topo-pill px-4 py-1.5 rounded-full text-xs font-semibold text-slate-600 hover:text-slate-900 transition">02 · Hybrid BESS</button>
+                    <button type="button" data-topo="2" class="topo-pill px-4 py-1.5 rounded-full text-xs font-semibold text-slate-600 hover:text-slate-900 transition">03 · Off-Grid</button>
+                </div>
+            </div>
+
+            <!-- Interactive Live SVG Power-Flow Telemetry Schematic -->
+            <div class="mb-12 rounded-2xl bg-slate-950 text-white p-6 sm:p-8 border border-slate-800 shadow-lg">
+                <div class="grid lg:grid-cols-12 gap-6 items-center">
+                    <div class="lg:col-span-4 space-y-2">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/15 text-amber-400 text-[11px] font-semibold">
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span>
+                            <span id="schematic-mode-label">Live Telemetry • 01 On-Grid Net-Metering</span>
+                        </div>
+                        <p id="schematic-mode-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            Daytime solar power feeds home loads first and exports surplus units directly to TANGEDCO / KSEB via bi-directional net-metering.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-8">
+                        <svg class="w-full h-28 sm:h-32" viewBox="0 0 680 120" fill="none" aria-hidden="true">
+                            <!-- Connection Paths -->
+                            <!-- Solar -> Inverter -->
+                            <line x1="115" y1="60" x2="255" y2="60" stroke="#334155" stroke-width="2.5" />
+                            <line id="flow-solar-inv" x1="115" y1="60" x2="255" y2="60" stroke="#F59E0B" stroke-width="2.5" class="energy-stream-active" />
+
+                            <!-- Inverter -> Home Load -->
+                            <path d="M335 60 L450 28 L555 28" stroke="#334155" stroke-width="2.5" fill="none" />
+                            <path id="flow-inv-home" d="M335 60 L450 28 L555 28" stroke="#F59E0B" stroke-width="2.5" fill="none" class="energy-stream-active" />
+
+                            <!-- Inverter -> BESS Battery -->
+                            <line x1="295" y1="86" x2="295" y2="112" stroke="#334155" stroke-width="2.5" />
+                            <line id="flow-inv-bess" x1="295" y1="86" x2="295" y2="112" stroke="#10B981" stroke-width="2.5" class="energy-stream-active opacity-20" />
+
+                            <!-- Inverter -> Utility Grid -->
+                            <path d="M335 60 L450 92 L555 92" stroke="#334155" stroke-width="2.5" fill="none" />
+                            <path id="flow-inv-grid" d="M335 60 L450 92 L555 92" stroke="#38BDF8" stroke-width="2.5" fill="none" class="energy-stream-active" />
+
+                            <!-- Node 1: Solar Array -->
+                            <rect x="15" y="32" width="100" height="56" rx="10" fill="#0F172A" stroke="#F59E0B" stroke-width="1.5" />
+                            <text x="65" y="56" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="600">SOLAR ARRAY</text>
+                            <text x="65" y="72" text-anchor="middle" fill="#F59E0B" font-size="9">Tier-1 TOPCon</text>
+
+                            <!-- Node 2: Inverter Core -->
+                            <rect x="255" y="32" width="80" height="56" rx="10" fill="#1E293B" stroke="#94A3B8" stroke-width="1.5" />
+                            <text x="295" y="56" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="600">INVERTER</text>
+                            <text id="node-bess-tag" x="295" y="72" text-anchor="middle" fill="#94A3B8" font-size="9">Grid-Tied MPPT</text>
+
+                            <!-- Node 3: Home / Facility Load -->
+                            <rect x="555" y="6" width="110" height="44" rx="8" fill="#0F172A" stroke="#F59E0B" stroke-width="1.5" />
+                            <text x="610" y="26" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="600">CRITICAL LOADS</text>
+                            <text x="610" y="40" text-anchor="middle" fill="#94A3B8" font-size="8.5">100% Daytime Solar</text>
+
+                            <!-- Node 4: TANGEDCO / KSEB Grid -->
+                            <rect id="node-grid-box" x="555" y="70" width="110" height="44" rx="8" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5" />
+                            <text x="610" y="90" text-anchor="middle" fill="#FFFFFF" font-size="10" font-weight="600">UTILITY GRID</text>
+                            <text id="node-grid-sub" x="610" y="104" text-anchor="middle" fill="#38BDF8" font-size="8.5">Net-Meter Export</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Card 1: On-Grid -->
+                <div data-card-topo="0" class="spotlight-card bg-white rounded-2xl border border-slate-200/90 p-8 sm:p-10 shadow-sm flex flex-col justify-between">
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="px-3 py-1 rounded-full bg-amber-500/10 text-amber-700 text-xs font-semibold">
+                                Most Popular • Subsidy Eligible
+                            </span>
+                            <span class="text-xs font-semibold text-slate-400 tabular-nums">01</span>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-slate-900">On-Grid Solar System</h3>
+                        <p class="mt-2 text-xs font-medium uppercase tracking-wider text-slate-400">
+                            Grid-Tied Bi-Directional Net-Metering
+                        </p>
+                        <p class="mt-4 text-sm text-slate-600 leading-relaxed">
+                            Synchronizes directly with TANGEDCO or KSEB utility lines without batteries. Surplus daytime
+                            solar energy is exported to the grid and credited against your night-time consumption.
+                        </p>
+
+                        <ul class="mt-6 space-y-3 text-sm text-slate-700 border-t border-slate-100 pt-6">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-amber-500 text-xs mt-1"></i>
+                                <span>Eligible for up to <strong>₹1,00,000</strong> PM Surya Ghar + TN State subsidy</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-amber-500 text-xs mt-1"></i>
+                                <span>Fastest payback period (3 to 4 years) with zero battery replacement cost</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-amber-500 text-xs mt-1"></i>
+                                <span>Reduces bi-monthly electricity bills by up to 90%–100%</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="relative z-10 mt-8 pt-6 border-t border-slate-100">
+                        <a href="#consultation" onclick="selectSystemType('On-Grid Solar')"
+                            class="group inline-flex items-center gap-2 text-sm font-semibold text-slate-900 hover:text-amber-600 transition">
+                            <span>Request On-Grid Quote</span>
+                            <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2: Hybrid -->
+                <div data-card-topo="1" class="spotlight-card bg-slate-900 text-white rounded-2xl border border-slate-800 p-8 sm:p-10 shadow-xl flex flex-col justify-between ring-1 ring-amber-500/30">
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="px-3 py-1 rounded-full bg-amber-500 text-slate-950 text-xs font-semibold">
+                                Zero-Downtime + Grid Export
+                            </span>
+                            <span class="text-xs font-semibold text-slate-500 tabular-nums">02</span>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-white">Hybrid Solar (BESS)</h3>
+                        <p class="mt-2 text-xs font-medium uppercase tracking-wider text-amber-400">
+                            Net-Metering + Lithium-LFP Storage
+                        </p>
+                        <p class="mt-4 text-sm text-slate-300 leading-relaxed">
+                            Combines utility net-metering with intelligent Lithium Iron Phosphate (LiFePO4) battery
+                            banks. Powers critical loads seamlessly during power cuts while exporting excess units once
+                            batteries are full.
+                        </p>
+
+                        <ul class="mt-6 space-y-3 text-sm text-slate-200 border-t border-slate-800 pt-6">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-amber-400 text-xs mt-1"></i>
+                                <span>Millisecond switchover (< 10ms) for computers, medical gear & ACs</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-amber-400 text-xs mt-1"></i>
+                                <span>Exports excess solar power via TANGEDCO/KSEB bidirectional meter</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-amber-400 text-xs mt-1"></i>
+                                <span>10-year Lithium-LFP battery life with 6,000+ charge cycles</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="relative z-10 mt-8 pt-6 border-t border-slate-800">
+                        <a href="#consultation" onclick="selectSystemType('Hybrid Solar (BESS)')"
+                            class="group inline-flex items-center gap-2 text-sm font-semibold text-amber-400 hover:text-amber-300 transition">
+                            <span>Request Hybrid BESS Quote</span>
+                            <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3: Off-Grid -->
+                <div data-card-topo="2" class="spotlight-card bg-white rounded-2xl border border-slate-200/90 p-8 sm:p-10 shadow-sm flex flex-col justify-between">
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">
+                                Remote & Standalone
+                            </span>
+                            <span class="text-xs font-semibold text-slate-400 tabular-nums">03</span>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-slate-900">Off-Grid Solar System</h3>
+                        <p class="mt-2 text-xs font-medium uppercase tracking-wider text-slate-400">
+                            100% Grid-Independent Power
+                        </p>
+                        <p class="mt-4 text-sm text-slate-600 leading-relaxed">
+                            Designed for farmhouses, estates, hill stations, and rural facilities facing frequent
+                            voltage fluctuations or no utility grid access. Operates independently on solar and battery
+                            storage.
+                        </p>
+
+                        <ul class="mt-6 space-y-3 text-sm text-slate-700 border-t border-slate-100 pt-6">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-amber-500 text-xs mt-1"></i>
+                                <span>No TANGEDCO/KSEB export approval required</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-amber-500 text-xs mt-1"></i>
+                                <span>High-surge MPPT inverters built for water pumps & heavy inductive loads</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-amber-500 text-xs mt-1"></i>
+                                <span>Compatible with Tubular C10 or Lithium-LFP battery banks</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="relative z-10 mt-8 pt-6 border-t border-slate-100">
+                        <a href="#consultation" onclick="selectSystemType('Off-Grid Solar')"
+                            class="group inline-flex items-center gap-2 text-sm font-semibold text-slate-900 hover:text-amber-600 transition">
+                            <span>Request Off-Grid Quote</span>
+                            <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. TECHNICAL COMPARISON TABLE -->
+    <section class="py-24 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-2xl mb-12">
+                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600 mb-3">
+                    Side-By-Side Comparison
+                </p>
+                <h2 class="text-3xl font-semibold tracking-tight text-slate-900">
+                    Which solar architecture fits your property?
+                </h2>
+            </div>
+
+            <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-xs">
+                <table class="w-full text-left border-collapse text-sm">
+                    <thead>
+                        <tr class="bg-slate-50 border-b border-slate-200 text-slate-900 font-semibold">
+                            <th class="py-4 px-6">Feature / Parameter</th>
+                            <th class="py-4 px-6">On-Grid System</th>
+                            <th class="py-4 px-6 text-amber-700 bg-amber-50/50 border-x border-amber-200/50">Hybrid System (BESS)</th>
+                            <th class="py-4 px-6">Off-Grid System</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 text-slate-600">
+                        <tr class="hover:bg-slate-50/70 transition-colors">
+                            <td class="py-4 px-6 font-medium text-slate-900">Primary Goal</td>
+                            <td class="py-4 px-6">Maximum bill reduction & ROI</td>
+                            <td class="py-4 px-6 bg-amber-50/25 font-medium text-slate-900 border-x border-amber-200/40">Bill reduction + 24/7 blackout backup</td>
+                            <td class="py-4 px-6">Power generation during outages / remote sites</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/70 transition-colors">
+                            <td class="py-4 px-6 font-medium text-slate-900">Works During Power Cut?</td>
+                            <td class="py-4 px-6">No (Anti-islanding safety)</td>
+                            <td class="py-4 px-6 bg-amber-50/25 font-medium text-slate-900 border-x border-amber-200/40">Yes (Seamless UPS switchover)</td>
+                            <td class="py-4 px-6">Yes</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/70 transition-colors">
+                            <td class="py-4 px-6 font-medium text-slate-900">TANGEDCO / KSEB Net-Metering</td>
+                            <td class="py-4 px-6">Yes (Bi-directional export)</td>
+                            <td class="py-4 px-6 bg-amber-50/25 font-medium text-slate-900 border-x border-amber-200/40">Yes (Bi-directional export)</td>
+                            <td class="py-4 px-6">No grid export</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/70 transition-colors">
+                            <td class="py-4 px-6 font-medium text-slate-900">Government Subsidy (Up to ₹1L)</td>
+                            <td class="py-4 px-6 text-slate-900 font-medium">Eligible (DCR Modules)</td>
+                            <td class="py-4 px-6 bg-amber-50/25 font-medium text-slate-900 border-x border-amber-200/40">Eligible on Grid-Tied Hybrid</td>
+                            <td class="py-4 px-6">Not applicable</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/70 transition-colors">
+                            <td class="py-4 px-6 font-medium text-slate-900">Battery Storage Required</td>
+                            <td class="py-4 px-6">None</td>
+                            <td class="py-4 px-6 bg-amber-50/25 font-medium text-slate-900 border-x border-amber-200/40 tabular-nums">Lithium-LFP (5 kWh – 50+ kWh)</td>
+                            <td class="py-4 px-6">Tubular C10 or Lithium-LFP</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. CONSULTATION SECTION -->
+    <section id="consultation" class="py-24 bg-alabaster">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-start">
+
+                <!-- Left Column -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600 mb-3">
+                            Schedule a Consultation
+                        </p>
+                        <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900">
+                            Get an On-Grid or Hybrid proposal.
+                        </h2>
+                        <p class="mt-4 text-base text-slate-600 leading-relaxed">
+                            Our engineers handle complete TANGEDCO & KSEB bi-directional meter approvals, CEIG
+                            clearances, and PM Surya Ghar subsidy filings.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 pt-4 border-t border-slate-200 text-sm">
+                        <div>
+                            <span
+                                class="text-xs uppercase tracking-wider text-slate-400 font-semibold block">Centralized
+                                Engineering Helpline</span>
+                            <a href="tel:+918148133644"
+                                class="text-xl font-semibold text-slate-900 hover:text-amber-600 transition mt-1 inline-block tabular-nums">
+                                +91 81481 33644
+                            </a>
+                        </div>
+                        <div>
+                            <span
+                                class="text-xs uppercase tracking-wider text-slate-400 font-semibold block">Email</span>
+                            <a href="mailto:info@suntasticsolarsystems.com"
+                                class="text-slate-700 hover:text-slate-900 transition mt-1 inline-block">
+                                info@suntasticsolarsystems.com
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Form -->
+                <div class="spotlight-card lg:col-span-7 bg-white rounded-2xl border border-slate-200/90 p-8 sm:p-10 shadow-sm">
+                    <form id="consultation-form" onsubmit="submitConsultation(event)" class="relative z-10 space-y-6">
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-slate-500 font-semibold mb-3">
+                                System Preference
+                            </label>
+                            <div class="grid grid-cols-3 gap-3">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="looking-for" value="On-Grid Solar" class="peer sr-only"
+                                        checked />
+                                    <div
+                                        class="py-3 px-4 rounded-xl border border-slate-200 peer-checked:border-slate-900 peer-checked:bg-slate-900 peer-checked:text-white text-slate-700 text-xs sm:text-sm font-medium text-center transition">
+                                        On-Grid
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="looking-for" value="Hybrid Solar (BESS)"
+                                        class="peer sr-only" />
+                                    <div
+                                        class="py-3 px-4 rounded-xl border border-slate-200 peer-checked:border-slate-900 peer-checked:bg-slate-900 peer-checked:text-white text-slate-700 text-xs sm:text-sm font-medium text-center transition">
+                                        Hybrid (BESS)
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="looking-for" value="Off-Grid Solar"
+                                        class="peer sr-only" />
+                                    <div
+                                        class="py-3 px-4 rounded-xl border border-slate-200 peer-checked:border-slate-900 peer-checked:bg-slate-900 peer-checked:text-white text-slate-700 text-xs sm:text-sm font-medium text-center transition">
+                                        Off-Grid
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1.5">Full Name *</label>
+                                <input type="text" name="fname" required placeholder="Your name"
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:border-slate-900 focus:ring-2 focus:ring-amber-500/15 outline-none transition" />
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1.5">Mobile Number *</label>
+                                <input type="tel" name="number" required pattern="[0-9]{10}"
+                                    placeholder="10-digit mobile number"
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm tabular-nums focus:border-slate-900 focus:ring-2 focus:ring-amber-500/15 outline-none transition" />
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1.5">Avg. Monthly Electricity
+                                    Bill (₹) *</label>
+                                <input type="number" name="billnumbers" required placeholder="e.g. 4500"
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm tabular-nums focus:border-slate-900 focus:ring-2 focus:ring-amber-500/15 outline-none transition" />
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1.5">6-Digit Pincode *</label>
+                                <input type="text" name="pinnumber" required pattern="[0-9]{6}"
+                                    placeholder="e.g. 600044"
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm tabular-nums focus:border-slate-900 focus:ring-2 focus:ring-amber-500/15 outline-none transition" />
+                            </div>
+                        </div>
+
+                        <div class="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <span class="text-xs text-slate-400">No obligation • Direct EPC consultation</span>
+                            <button type="submit" id="submit-btn"
+                                class="px-8 py-3.5 rounded-full bg-slate-900 hover:bg-amber-600 text-white text-sm font-medium transition shadow-sm">
+                                Request Custom Proposal
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. FOOTER -->
+    <footer class="bg-[#05070B] text-slate-400 relative mt-28">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div
+                class="-translate-y-1/2 rounded-2xl bg-gradient-to-r from-[#F59E0B] to-[#D97706] px-8 py-10 sm:px-14 sm:py-12 shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+                <div>
+                    <h2 class="text-2xl sm:text-4xl font-bold tracking-tight text-white">
+                        Get in touch with our team of experts
+                    </h2>
+                    <p class="mt-2 text-sm text-white/90">
+                        MNRE & TANGEDCO Empanelled Solar EPC • Serving Tamil Nadu & Kerala
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-6">
+                    <a href="#consultation"
+                        class="px-7 py-3.5 rounded-lg bg-white hover:bg-slate-100 text-slate-900 text-sm font-semibold shadow-sm transition">
+                        Contact us
+                    </a>
+
+                    <a href="tel:+918148133644" class="flex items-center gap-3.5 group">
+                        <span
+                            class="w-12 h-12 rounded-full bg-white text-[#D97706] flex items-center justify-center shadow-sm group-hover:scale-105 transition">
+                            <i class="fa-solid fa-phone-volume text-lg"></i>
+                        </span>
+                        <div>
+                            <span class="block text-xs text-white/90 font-medium">Need any help</span>
+                            <span class="block text-base sm:text-lg font-bold text-white tracking-tight tabular-nums">+91 81481
+                                33644</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-4 pb-14">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-14 border-b border-slate-800/80">
+                <div class="lg:col-span-5 space-y-5">
+                    <a href="index.html" class="inline-flex items-center gap-3">
+                        <img src="images/logo.png" alt="Suntastic Engineering"
+                            class="h-[50px] w-auto object-contain bg-white px-3 py-1.5 rounded-lg"
+                            onerror="if(!this.dataset.TriedAlt){this.dataset.TriedAlt='1';this.src='images/5b55c9a5e03751532348837Suntastic-Logo.png';}else{this.style.display='none';document.getElementById('footer-fallback-logo').style.display='flex';}" />
+                        <div id="footer-fallback-logo" class="hidden items-center gap-2.5">
+                            <svg class="w-10 h-10 text-[#F59E0B]" viewBox="0 0 64 64" fill="none">
+                                <circle cx="32" cy="32" r="26" stroke="currentColor" stroke-width="4"
+                                    stroke-dasharray="12 6" />
+                                <circle cx="32" cy="32" r="20" stroke="currentColor" stroke-width="3"
+                                    stroke-dasharray="10 5" />
+                            </svg>
+                            <span class="font-bold text-lg tracking-[0.18em] text-white">
+                                SUN TASTIC<sup class="text-[9px] font-semibold ml-0.5 text-amber-400">TM</sup>
+                            </span>
+                        </div>
+                    </a>
+                    <p class="text-sm text-slate-400 leading-relaxed max-w-sm">
+                        Providing innovative solar solutions for homes, industries, and government infrastructure.
+                        Committed to a sustainable future across South India.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-2 space-y-3.5 text-sm">
+                    <div class="text-white font-semibold tracking-tight mb-4">Legal</div>
+                    <ul class="space-y-3">
+                        <li><a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#consultation" class="hover:text-white transition">Terms</a></li>
+                        <li><a href="index.html#proof" class="hover:text-white transition">Empanelments</a></li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-3 space-y-3.5 text-sm">
+                    <div class="text-white font-semibold tracking-tight mb-4">Company</div>
+                    <ul class="space-y-3">
+                        <li><a href="index.html#proof" class="hover:text-white transition">About</a></li>
+                        <li><a href="residential.html" class="hover:text-white transition">Residential Rooftops</a></li>
+                        <li><a href="commercial-industrial.html" class="hover:text-white transition">Commercial &
+                                Industrial EPC</a></li>
+                        <li><a href="on-grid-hybrid.html" class="text-white font-medium transition">On-Grid & Hybrid
+                                Systems</a></li>
+                        <li><a href="index.html#projects" class="hover:text-white transition">Projects</a></li>
+                        <li><a href="career.html" class="hover:text-white transition">Career</a></li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-2 space-y-3.5 text-sm">
+                    <div class="text-white font-semibold tracking-tight mb-4">Resources</div>
+                    <ul class="space-y-3">
+                        <li><a href="calculator.html"
+                                class="text-amber-400 hover:text-amber-300 font-medium transition">Solar Calculator</a>
+                        </li>
+                        <li><a href="index.html#faq" class="hover:text-white transition">Subsidy Guide</a></li>
+                        <li><a href="on-grid-hybrid.html" class="hover:text-white transition">Net-Metering Guide</a></li>
+                        <li><a href="blog.html" class="hover:text-white transition">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+                <div>© 2026 Suntastic Engineering Private Limited. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP BUTTON (Added for 100% Conversion Parity) -->
+    <a href="https://api.whatsapp.com/send?phone=918148133644&text=Hi%20Suntastic%20Engineering,%20I%20would%20like%20to%20discuss%20an%20On-Grid%20or%20Hybrid%20solar%20installation."
+        target="_blank" rel="noopener" aria-label="Chat on WhatsApp"
+        class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-slate-900 hover:bg-[#F59E0B] text-white shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-105">
+        <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-amber-500 border-2 border-white"></span>
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+    </a>
+
+    <script>
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Cursor-Tracked Spotlight Cards
+        document.querySelectorAll('.spotlight-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+            });
+        });
+
+        // Interactive Power-Flow Schematic Controller
+        (function () {
+            const pills = document.querySelectorAll('.topo-pill');
+            const cards = document.querySelectorAll('[data-card-topo]');
+            const label = document.getElementById('schematic-mode-label');
+            const desc = document.getElementById('schematic-mode-desc');
+            const flowBess = document.getElementById('flow-inv-bess');
+            const flowGrid = document.getElementById('flow-inv-grid');
+            const bessTag = document.getElementById('node-bess-tag');
+            const gridSub = document.getElementById('node-grid-sub');
+            const gridBox = document.getElementById('node-grid-box');
+
+            const modes = [
+                {
+                    label: 'Live Telemetry • 01 On-Grid Net-Metering',
+                    desc: 'Daytime solar power feeds home loads first and exports surplus units directly to TANGEDCO / KSEB via bi-directional net-metering.',
+                    bessOpacity: '0.15',
+                    gridOpacity: '1',
+                    bessTag: 'Grid-Tied MPPT',
+                    gridSub: 'Net-Meter Export',
+                    gridStroke: '#38BDF8'
+                },
+                {
+                    label: 'Live Telemetry • 02 Hybrid Solar + Lithium-LFP BESS',
+                    desc: 'Simultaneously charges Lithium-LFP storage (< 10ms blackout UPS switchover) while exporting excess solar units to the utility grid.',
+                    bessOpacity: '1',
+                    gridOpacity: '1',
+                    bessTag: 'Hybrid + LiFePO4',
+                    gridSub: 'Bi-Directional Sync',
+                    gridStroke: '#10B981'
+                },
+                {
+                    label: 'Live Telemetry • 03 Off-Grid Standalone Architecture',
+                    desc: '100% grid-independent operation for remote estates and high-fluctuation zones—solar charges battery banks to run heavy inductive loads.',
+                    bessOpacity: '1',
+                    gridOpacity: '0.12',
+                    bessTag: 'High-Surge MPPT',
+                    gridSub: 'Grid Isolated',
+                    gridStroke: '#475569'
+                }
+            ];
+
+            function setTopology(idx) {
+                const m = modes[idx] || modes[0];
+                if (label) label.textContent = m.label;
+                if (desc) desc.textContent = m.desc;
+                if (flowBess) flowBess.style.opacity = m.bessOpacity;
+                if (flowGrid) flowGrid.style.opacity = m.gridOpacity;
+                if (bessTag) bessTag.textContent = m.bessTag;
+                if (gridSub) gridSub.textContent = m.gridSub;
+                if (gridBox) gridBox.setAttribute('stroke', m.gridStroke);
+
+                pills.forEach((p, i) => {
+                    const active = i === idx;
+                    p.className = active
+                        ? 'topo-pill px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-slate-900 shadow-2xs transition'
+                        : 'topo-pill px-4 py-1.5 rounded-full text-xs font-semibold text-slate-600 hover:text-slate-900 transition';
+                });
+            }
+
+            pills.forEach(p => {
+                p.addEventListener('click', () => setTopology(Number(p.dataset.topo)));
+            });
+
+            cards.forEach(c => {
+                c.addEventListener('mouseenter', () => setTopology(Number(c.dataset.cardTopo)));
+            });
+        })();
+
+        function selectSystemType(type) {
+            const radios = document.querySelectorAll('input[name="looking-for"]');
+            radios.forEach(r => {
+                if (r.value === type) r.checked = true;
+            });
+        }
+
+        function submitConsultation(e) {
+            e.preventDefault();
+            const form = e.target;
+            const segment = form['looking-for'].value;
+            const name = form.fname.value;
+            const mobile = form.number.value;
+            const bill = form.billnumbers.value;
+            const pin = form.pinnumber.value;
+
+            const btn = document.getElementById('submit-btn');
+            btn.textContent = 'Sending Request...';
+
+            const message = encodeURIComponent(
+                `Hello Suntastic Engineering,\n\nI would like a solar consultation:\n• System Type: ${segment}\n• Name: ${name}\n• Mobile: ${mobile}\n• Avg. Monthly Bill: ₹${bill}\n• Pincode: ${pin}`
+            );
+
+            setTimeout(() => {
+                window.open(`https://api.whatsapp.com/send?phone=918148133644&text=${message}`, '_blank');
+                btn.textContent = 'Request Sent ✓';
+                form.reset();
+            }, 400);
+        }
+    </script>
+</body>
+
+</html>
